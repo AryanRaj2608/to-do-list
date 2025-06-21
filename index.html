@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Todo List</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body class="light-mode">
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1>Todo List</h1>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="material-icons">dark_mode</span>
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <span class="progress-text">0% Complete</span>
+            </div>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search tasks..." class="search-input">
+                <span class="material-icons search-icon">search</span>
+            </div>
+            <div class="filter-sort">
+                <select id="filterSelect" class="filter-select">
+                    <option value="all">All Tasks</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+                <select id="sortSelect" class="sort-select">
+                    <option value="date">Sort by Date</option>
+                    <option value="priority">Sort by Priority</option>
+                    <option value="name">Sort by Name</option>
+                </select>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <form id="taskForm" class="task-form">
+                <div class="form-row">
+                    <input type="text" id="taskInput" placeholder="Add a new task..." required>
+                    <input type="datetime-local" id="dueDate">
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button type="submit" class="add-button">
+                        <span class="material-icons">add</span>
+                    </button>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="taskTags" placeholder="Add tags (comma-separated)">
+                </div>
+            </form>
+
+            <div id="taskList" class="task-list"></div>
+        </main>
+    </div>
+
+    <!-- Task Template -->
+    <template id="taskTemplate">
+        <div class="task-item" data-id="">
+            <div class="task-content">
+                <label class="checkbox-container">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="task-details">
+                    <div class="task-text"></div>
+                    <div class="task-meta">
+                        <span class="due-date"></span>
+                        <div class="tags"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="task-actions">
+                <button class="edit-btn" aria-label="Edit task">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="delete-btn" aria-label="Delete task">
+                    <span class="material-icons">delete</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/app.js"></script>
+</body>
+</html> 
